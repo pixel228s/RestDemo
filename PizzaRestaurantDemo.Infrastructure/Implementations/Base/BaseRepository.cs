@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PizzaRestaurantDemo.Domain.Base;
 using PizzaRestaurantDemo.Persistence.Data;
 
 namespace PizzaRestaurantDemo.Infrastructure.Implementations.Base
 {
-    public class BaseRepository<T> : IBaseRepository<T> where T : class
+    public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
         protected readonly PizzaRestaurantDbContext _dbContext;
         protected readonly DbSet<T> _dbSet;
@@ -23,6 +24,14 @@ namespace PizzaRestaurantDemo.Infrastructure.Implementations.Base
         {
             await _dbSet.AddAsync(entity, cancellationToken);
             await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task DeactivateEntity(T Entity, CancellationToken cancellationToken)
+        {
+            Entity.IsDeleted = true;
+
+            _dbContext.Update(Entity);
+            await _dbContext.SaveChangesAsync(cancellationToken);
         }
 
         public async Task RemoveAsync(CancellationToken cancellationToken, T entity)

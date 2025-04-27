@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Amazon.S3;
+using Azure;
+using Microsoft.AspNetCore.Mvc;
 using PizzaRestaurantDemo.Application.Infrastructure.Exceptions;
 using System.Data;
 using System.Net;
@@ -57,6 +59,12 @@ namespace PizzaRestaurantDemo.API.Infrastructure.Extensions
                     problemDetails.Type = nameof(KeyNotFoundException);
                     break;
 
+                case ImageFormatNotAllowedException:
+                    problemDetails.Title = "Image format not allowes";
+                    problemDetails.Status = (int)HttpStatusCode.UnsupportedMediaType;
+                    problemDetails.Type = nameof(ImageFormatNotAllowedException);
+                    break;
+
                 case NoSuchItemException:
                     problemDetails.Title = "Item not found.";
                     problemDetails.Status = (int)HttpStatusCode.NotFound;
@@ -67,6 +75,12 @@ namespace PizzaRestaurantDemo.API.Infrastructure.Extensions
                     problemDetails.Title = "Order not correct.";
                     problemDetails.Status = (int)HttpStatusCode.Forbidden;
                     problemDetails.Type = nameof(InvalidOrderException);
+                    break;
+
+                case AmazonS3Exception awsEx:
+                    problemDetails.Title = awsEx.Message;
+                    problemDetails.Status = (int)awsEx.StatusCode;
+                    problemDetails.Type = nameof(AmazonS3Exception);
                     break;
 
                 case UserAlreadyExistsException:

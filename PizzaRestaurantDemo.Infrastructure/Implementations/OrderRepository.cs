@@ -1,5 +1,5 @@
-﻿using PizzaRestaurantDemo.Application.Orders.Interfaces;
-using PizzaRestaurantDemo.Application.Orders.Responses;
+﻿using Microsoft.EntityFrameworkCore;
+using PizzaRestaurantDemo.Application.Orders.Interfaces;
 using PizzaRestaurantDemo.Domain.Models;
 using PizzaRestaurantDemo.Infrastructure.Implementations.Base;
 using PizzaRestaurantDemo.Persistence.Data;
@@ -12,9 +12,13 @@ namespace PizzaRestaurantDemo.Infrastructure.Implementations
         {
         }
 
-        public Task<OrderResponse> GetOrderById(int id, CancellationToken cancellationToken)
+        public Task<Order?> GetOrderById(int id, int pizzaId,  CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var order =  _dbSet
+                .AsNoTracking()
+                .Where(x => x.UserId == id && x.Pizzas.Any(p => p.PizzaId == pizzaId))
+                .FirstOrDefaultAsync(cancellationToken);
+            return order;
         }
     }
 }

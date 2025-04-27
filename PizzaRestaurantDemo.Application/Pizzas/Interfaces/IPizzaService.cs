@@ -9,6 +9,6 @@ namespace PizzaRestaurantDemo.Application.Pizzas.Interfaces
         Task<PizzaExample> UpdatePizza(PizzaUpdateModel model, int id, CancellationToken cancellationToken);
         Task DeletePizza(int id, CancellationToken cancellationToken);
         Task<PizzaExample> GetPizzaExampleById(int id, CancellationToken cancellationToken);
-        Task<IEnumerable<PizzaExample>> GetAllPizzas(CancellationToken cancellationToken);
+        Task<IEnumerable<PizzaExample>> GetAllPizzas(CancellationToken cancellationToken);     
     }
 }

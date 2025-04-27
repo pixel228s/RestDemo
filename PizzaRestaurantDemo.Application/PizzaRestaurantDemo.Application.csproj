@@ -15,10 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PizzaRestaurantDemo.Domain\PizzaRestaurantDemo.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Ranks\Models\Responses\" />
+    <ProjectReference Include="..\PizzaRestaurantDemo.Shared\PizzaRestaurantDemo.Shared.csproj" />
   </ItemGroup>
 
 </Project>

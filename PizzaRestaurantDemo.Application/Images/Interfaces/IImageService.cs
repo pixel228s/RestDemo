@@ -4,8 +4,8 @@ namespace PizzaRestaurantDemo.Application.Images.Interfaces
 {
     public interface IImageService
     {
-        Task DeleteImage(int pizzaId, CancellationToken cancellationToken);
-        Task UpdateImage(int pizzaId, CancellationToken cancellationToken);
-        Task UploadImage(IFormFile formFile, CancellationToken cancellationToken);
+        Task<string> Get(int pizzaId, CancellationToken cancellationToken);
+        Task<Tuple<string, string>> SaveImage(IFormFile file);
+        Task UploadImage(IFormFile formFile, int pizzaId, CancellationToken cancellationToken);
     }
 }

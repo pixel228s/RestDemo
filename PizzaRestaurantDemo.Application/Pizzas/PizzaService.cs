@@ -1,4 +1,5 @@
 ﻿using Mapster;
+using Microsoft.AspNetCore.Http;
 using PizzaRestaurantDemo.Application.Infrastructure.Exceptions;
 using PizzaRestaurantDemo.Application.Pizzas.Interfaces;
 using PizzaRestaurantDemo.Application.Pizzas.Models.Requests;
@@ -82,6 +83,5 @@ namespace PizzaRestaurantDemo.Application.Pizzas
             await _pizzaRepository.UpdateEntity(cancellationToken, pizza);
             return pizza.Adapt<PizzaExample>();
         }
-
     }
 }
