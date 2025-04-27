@@ -1,9 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using PizzaRestaurantDemo.API.Infrastructure.Extensions;
+using PizzaRestaurantDemo.API.Infrastructure.Middlewares;
 using PizzaRestaurantDemo.Application.Infrastructure.Configurations;
 using PizzaRestaurantDemo.Application.Infrastructure.Configurations.Mapster;
 using PizzaRestaurantDemo.Infrastructure;
 using PizzaRestaurantDemo.Persistence.Data;
+using PizzaRestaurantDemo.Shared.Services;
 
 namespace PizzaRestaurantDemo
 {
@@ -17,8 +19,6 @@ namespace PizzaRestaurantDemo
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
 
             builder.Services.AddDbContext<PizzaRestaurantDbContext>(options =>
             {
@@ -26,10 +26,14 @@ namespace PizzaRestaurantDemo
                 options.UseSqlServer(connectionString);
             });
 
+            builder.Services.AddScoped<ICloudService, CloudService>();
+
             builder.Services
+                .AddSwaggerDocumentation()
                 .InjectServices()
                 .AddValidations()
                 .RegisterMaps();
+         
 
             var app = builder.Build();
 
@@ -40,6 +44,7 @@ namespace PizzaRestaurantDemo
                 app.UseSwaggerUI();
             }
             app.UseMiddleware<ExceptionHandler>();
+            app.UseMiddleware<CultureMiddleware>();
 
             app.UseHttpsRedirection();
 

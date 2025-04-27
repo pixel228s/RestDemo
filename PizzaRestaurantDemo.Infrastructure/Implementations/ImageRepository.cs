@@ -18,5 +18,12 @@ namespace PizzaRestaurantDemo.Infrastructure.Implementations
                 .AsNoTracking()
                 .FirstOrDefaultAsync(x => x.PizzaId == pizzaId);
         }
+
+        public Task<bool> IsPresent(int pizzaId, CancellationToken cancellationToken)
+        {
+            return _dbSet
+                .AsNoTracking()
+                .AnyAsync(x => x.PizzaId == pizzaId, cancellationToken);
+        }
     }
 }

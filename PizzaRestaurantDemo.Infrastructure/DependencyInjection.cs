@@ -8,6 +8,8 @@ using PizzaRestaurantDemo.Application.Orders.Interfaces;
 using PizzaRestaurantDemo.Application.Orders;
 using PizzaRestaurantDemo.Application.Ranks.Interfaces;
 using PizzaRestaurantDemo.Application.Ranks;
+using PizzaRestaurantDemo.Application.Images.Interfaces;
+using PizzaRestaurantDemo.Application.Images;
 
 namespace PizzaRestaurantDemo.Infrastructure
 {
@@ -23,6 +25,8 @@ namespace PizzaRestaurantDemo.Infrastructure
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IRankingRepository, RankingRepository>();
             services.AddScoped<IRankingService, RankingService>();
+            services.AddScoped<IImageRepository, ImageRepository>();
+            services.AddScoped<IImageService, ImageService>();
             return services;
         }
     }

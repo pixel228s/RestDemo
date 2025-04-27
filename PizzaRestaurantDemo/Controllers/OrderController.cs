@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PizzaRestaurantDemo.Application.Orders.Interfaces;
 using PizzaRestaurantDemo.Application.Orders.Requests;
-using PizzaRestaurantDemo.Application.Pizzas.Models.Requests;
 
 namespace PizzaRestaurantDemo.API.Controllers
 {
