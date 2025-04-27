@@ -21,7 +21,6 @@
     <ProjectReference Include="..\PizzaRestaurantDemo.Application\PizzaRestaurantDemo.Application.csproj" />
     <ProjectReference Include="..\PizzaRestaurantDemo.Persistence\PizzaRestaurantDemo.Persistence.csproj" />
 	<ProjectReference Include="..\PizzaRestaurantDemo.Infrastructure\PizzaRestaurantDemo.Infrastructure.csproj" />
-	<ProjectReference Include="..\PizzaRestaurantDemo.Shared\PizzaRestaurantDemo.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
