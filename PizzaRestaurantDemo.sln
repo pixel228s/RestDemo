@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35208.52
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaRestaurantDemo.API", "PizzaRestaurantDemo\PizzaRestaurantDemo.API.csproj", "{D2A2FA90-762B-4F57-90FB-869298660A70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaRestaurantDemo.API", "PizzaRestaurantDemo.API\PizzaRestaurantDemo.API.csproj", "{D2A2FA90-762B-4F57-90FB-869298660A70}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{B5D8897B-E9CC-49E2-B8F0-29F4A9601CA1}"
 EndProject
